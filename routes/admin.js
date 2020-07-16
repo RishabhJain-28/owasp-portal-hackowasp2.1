@@ -45,7 +45,7 @@ router.post("/invite", async (req, res) => {
     from: "youremail@gmail.com",
     to: email,
     subject: "Sending Email using Node.js",
-    html: `<a href="http://localhost:5000/api/admin/accept/${email}">Accept</a>`,
+    html: `<a href="https://owasp-portal-hackowasp21.herokuapp.com/api/admin/accept/${email}">Accept</a>`,
   };
 
   transport.sendMail(mailOptions, async function (error, info) {
@@ -75,7 +75,7 @@ router.get("/accept/:email", async (req, res) => {
   user.emailToken = false;
 
   await user.save();
-  res.redirect("http://localhost:3000/");
+  res.redirect(`https://owasp-portal-hackowasp21.herokuapp.com/`);
 });
 
 module.exports = router;
