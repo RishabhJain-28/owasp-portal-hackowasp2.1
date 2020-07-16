@@ -1,0 +1,14 @@
+// USER
+export const LOAD_USER = "LOAD_USER";
+export const LOGOUT_USER = "LOGOUT_USER";
+export const GET_MY_TEAMS = "GET_MY_TEAMS";
+export const SET_CURRENT_TEAM = "SET_CURRENT_TEAM";
+export const CREATE_NEW_TEAM = "CREATE_NEW_TEAM";
+export const JOIN_TEAM = "JOIN_TEAM";
+export const LEAVE_TEAM = "LEAVE_TEAM";
+
+// TEAM
+export const START_EVENT = "START_EVENT";
+export const SUBMIT_ANSWER = "SUBMIT_ANSWER";
+export const SET_CURRENT_QUESTION = "SET_CURRENT_QUESTION";
+export const GET_LEADERBOARD = "GET_LEADERBOARD";

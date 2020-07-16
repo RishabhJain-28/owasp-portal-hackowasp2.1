@@ -1,0 +1,51 @@
+.mypro_img {
+  margin-top: 30px;
+
+  margin-bottom: 40px;
+}
+
+.mypro_create {
+  padding: 1rem;
+}
+.mypro_join {
+  padding: 1rem;
+}
+.team_bkg {
+  height: 45vh !important;
+  padding-top: 3rem;
+}
+.team_avatar {
+  height: 150px;
+  width: 150px;
+  padding: 5px !important;
+  background-color: white;
+}
+.team_eventsec {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.team_teamsec {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.team_teamsec_bkg {
+  height: 120px;
+}
+
+.team_teamsec_avtr {
+  height: 150px !important;
+  width: 150px !important;
+  padding: 5px;
+  background-color: white;
+}
+.team_teamctnt {
+  position: relative;
+  margin-top: -6rem !important;
+}
+.team_teamsechd {
+  margin-top: 0 !important;
+}
+#team_teamseccards {
+  border-radius: 10px;
+}

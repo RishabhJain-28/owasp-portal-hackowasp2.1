@@ -1,0 +1,35 @@
+{
+  "name": "hackowasp",
+  "version": "1.0.0",
+  "description": "An event hosting portal along with a society portal to manage team and events.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "format": "prettier --write \"*/**/*.{js,jsx}\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.0.0",
+    "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "joi-objectid": "^3.0.1",
+    "lodash": "^4.17.19",
+    "mongoose": "^5.9.22",
+    "nodemailer": "^6.4.10",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "shortid": "^2.2.15"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5"
+  }
+}

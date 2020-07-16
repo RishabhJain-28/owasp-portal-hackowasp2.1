@@ -1,0 +1,25 @@
+.ind_qcards {
+  padding: 2rem;
+}
+.ind2_qcard_title {
+  padding-left: 1.7rem;
+  padding-top: 1rem;
+}
+.ind2_input {
+  padding-left: 0 !important;
+  padding-top: 0 !important;
+}
+
+.ind2_rt_sec {
+  height: 91vh;
+  overflow-y: scroll;
+}
+.ind2_lt_sec {
+  background: url(../../assets/images/question.jpg);
+  height: 91vh !important  ;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.ind2_row {
+  margin-bottom: 0 !important  ;
+}
