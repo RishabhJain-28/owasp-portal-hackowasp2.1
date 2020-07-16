@@ -10,6 +10,7 @@ const initialState = {
   team: null,
   eventTeams: [],
   questions: [],
+  currentQuestion: null,
   alert: null,
   score: null,
 };
@@ -33,6 +34,7 @@ export default (state = initialState, action) => {
     case SET_CURRENT_QUESTION:
       return {
         ...state,
+        alert: null,
         currentQuestion: action.payload,
       };
 
