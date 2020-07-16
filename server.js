@@ -20,6 +20,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
+app.use(express.static("client/build"));
 
 // Importing Routes
 const team = require("./routes/team");
