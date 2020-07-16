@@ -15,7 +15,7 @@ const Navbar = ({
     loadUser();
     getMyTeams();
   }, []);
-
+  const clickHandler = (e) => {};
   return (
     <Fragment>
       <nav className="black ">
@@ -28,11 +28,20 @@ const Navbar = ({
               {loadingUser === false &&
               isAuthenticated === true &&
               user !== null ? (
-                <li>
-                  <a href="https://owasp-portal-hackowasp21.herokuapp.com/api/user/logout">
-                    Logout
-                  </a>
-                </li>
+                <Fragment>
+                  <li>
+                    <Link to="/timeline">Management</Link>
+                  </li>
+
+                  <li>
+                    <a
+                      href="https://owasp-portal-hackowasp21.herokuapp.com/api/user/logout"
+                      onClick={clickHandler}
+                    >
+                      Logout
+                    </a>
+                  </li>
+                </Fragment>
               ) : (
                 <li>
                   {" "}
