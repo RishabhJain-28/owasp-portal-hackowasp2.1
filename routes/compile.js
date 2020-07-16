@@ -13,10 +13,10 @@ router.post("/", async (req, res) => {
       client_secret: keys.hackerearth_client_secret,
       async: 0,
       source: source,
-      lang: "PYTHON",
+      lang: "CPP14",
       time_limit: 5,
       memory_limit: 262144,
-      //   input:100,
+      input,
     },
   };
   const cres = await request(creq, (err, z, body) => {

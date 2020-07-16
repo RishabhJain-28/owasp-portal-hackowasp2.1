@@ -21,11 +21,13 @@ class Compiler extends Component {
   submitCode = async () => {
     const { data } = await axios.post("http://localhost:5000/api/compile", {
       code: this.state.value,
+      input: this.state.input,
     });
-    // console.log(JSON.parse(res));
     console.log(data.run_status.output);
-    // console.log(data.run_status.output, "a");
     this.setState({ output: data.run_status.output });
+  };
+  onInputChange = (e) => {
+    this.setState({ input: e.target.value });
   };
   render() {
     return (
@@ -51,6 +53,14 @@ class Compiler extends Component {
           }}
         />
         <button onClick={this.submitCode}>Submit</button>
+        <br />
+        <label htmlFor="input">Input</label>
+        <input
+          // value={this.state.input}
+          onChange={this.onInputChange}
+          id="input"
+          type="text"
+        />
         <p>{this.state.output}</p>
       </>
     );
