@@ -29,12 +29,14 @@ const Navbar = ({
               isAuthenticated === true &&
               user !== null ? (
                 <li>
-                  <a href="http://localhost:5000/api/user/logout">Logout</a>
+                  <a href="https://owasp-portal-hackowasp21.herokuapp.com/api/user/logout">
+                    Logout
+                  </a>
                 </li>
               ) : (
                 <li>
                   {" "}
-                  <a href="http://localhost:5000/api/user/login">
+                  <a href="https://owasp-portal-hackowasp21.herokuapp.com/api/user/login">
                     Login With Google
                   </a>
                 </li>
