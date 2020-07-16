@@ -28,6 +28,7 @@ const question = require("./routes/question");
 const timeline = require("./routes/timeline");
 const user = require("./routes/user");
 const admin = require("./routes/admin");
+const compile = require("./routes/compile");
 
 // Routes
 app.use("/api/team", team);
@@ -36,11 +37,12 @@ app.use("/api/question", question);
 app.use("/api/timeline", timeline);
 app.use("/api/user", user);
 app.use("/api/admin", admin);
+app.use("/api/compile", compile);
 
 // DB setup
 mongoose
   .connect(
-    "mongodb+srv://aryaman:aryaman@hackowasp.jk7hi.mongodb.net/hackowasp?retryWrites=true&w=majority",
+    "mongodb+srv://aryaman:aryman@hackowasp.jk7hi.mongodb.net/hackowasp?retryWrites=true&w=majority",
     { useUnifiedTopology: true, useNewUrlParser: true }
   )
   .then(() => console.log("Connected to MongoDB..."))
