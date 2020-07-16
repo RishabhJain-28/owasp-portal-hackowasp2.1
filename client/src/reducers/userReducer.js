@@ -32,8 +32,9 @@ export default (state = initialState, action) => {
       return {
         ...state,
         user: null,
-        team: null,
+        teams: [],
         isAuthenticated: false,
+        currentTeam: null,
       };
 
     // Get My Teams

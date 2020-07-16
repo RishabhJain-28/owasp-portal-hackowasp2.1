@@ -32,7 +32,7 @@ const App = () => {
           <Fragment>
             <Navbar />
             <Switch>
-              <Route exact path="/" component={UserPage} />
+              <Route exact path="/user" component={UserPage} />
               <Route exact path="/team/:id" component={TeamPage} />
               <Route exact path="/eventPage/:eventId" component={EventPage} />
               <Route exact path="/leaderboard" component={TeamCollection} />

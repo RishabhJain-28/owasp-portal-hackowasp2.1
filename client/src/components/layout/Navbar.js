@@ -15,24 +15,45 @@ const Navbar = ({
     loadUser();
     getMyTeams();
   }, []);
-
+  const clickHandler = (e) => {};
   return (
     <Fragment>
       <nav className="black ">
         <div className="navbar-fixed">
           <div className="nav-wrapper ">
             <Link to="#!" className="brand-logo center " id="brand-logo">
-              Event Portal{" "}
+              OWASP Portal{" "}
             </Link>
             <ul id="nav-mobile" className="right">
               {loadingUser === false &&
               isAuthenticated === true &&
               user !== null ? (
-                <li>
-                  <a href="https://owasp-portal-hackowasp21.herokuapp.com/api/user/logout">
-                    Logout
-                  </a>
-                </li>
+                <Fragment>
+                  {user.permission !== "USER" ? (
+                    <Fragment>
+                      <li>
+                        <Link to="/timeline">Management</Link>
+                      </li>
+
+                      <li>
+                        <Link to="/admin">Admin Portal</Link>
+                      </li>
+                    </Fragment>
+                  ) : null}
+
+                  <li>
+                    <Link to="/user">User</Link>
+                  </li>
+
+                  <li>
+                    <a
+                      href="https://owasp-portal-hackowasp21.herokuapp.com/api/user/logout"
+                      onClick={clickHandler}
+                    >
+                      Logout
+                    </a>
+                  </li>
+                </Fragment>
               ) : (
                 <li>
                   {" "}

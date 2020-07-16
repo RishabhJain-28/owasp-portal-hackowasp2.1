@@ -14,6 +14,12 @@ const questionSchema = new mongoose.Schema({
     enum: ["MCQ", "SINGLE", "CODE"],
     required: true,
   },
+  options: {
+    type: Array,
+    default: [],
+    min: 4,
+    max: 4
+  },
   file: {
     type: String,
   },
