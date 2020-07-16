@@ -1,16 +1,20 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { submitAnswer } from "../../actions/teamAction";
+import M from "materialize-css/dist/js/materialize.min.js";
 
-const McqAnswer = ({ team: {}, submitAnswer, question }) => {
+const McqAnswer = ({ team: { alert }, submitAnswer, question }) => {
+  useEffect(() => {
+    if (alert) {
+      M.toast({ html: alert.toString() });
+    }
+  }, [alert]);
   const [answer, setAnswer] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(answer);
     submitAnswer(question.question._id, answer);
   };
   const onChange = (e) => {
-    console.log("changed");
     setAnswer(e.target.name.toString());
   };
 

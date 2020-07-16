@@ -1,8 +1,14 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import M from "materialize-css/dist/js/materialize.min.js";
 import { connect } from "react-redux";
 import { submitAnswer } from "../../actions/teamAction";
 
-const InputAnswer = ({ team: {}, submitAnswer, question }) => {
+const InputAnswer = ({ team: { alert }, submitAnswer, question }) => {
+  useEffect(() => {
+    if (alert) {
+      M.toast({ html: alert.toString() });
+    }
+  }, [alert]);
   const [answer, setAnswer] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
