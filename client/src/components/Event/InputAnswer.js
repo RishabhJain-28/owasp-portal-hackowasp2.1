@@ -28,7 +28,7 @@ const InputAnswer = ({ team: { alert }, submitAnswer, question }) => {
               onChange={onChange}
               value={answer}
             />
-            <label htmlFor="answer">Your answer goes here</label>
+            <label htmlFor="answer" className="active">Your answer goes here</label>
           </div>
         </div>
         <input type="submit" value="Submit" className="btn blue right" />

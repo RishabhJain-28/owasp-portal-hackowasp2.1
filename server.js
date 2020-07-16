@@ -42,7 +42,7 @@ app.use("/api/compile", compile);
 // DB setup
 mongoose
   .connect(
-    "mongodb+srv://aryaman:aryman@hackowasp.jk7hi.mongodb.net/hackowasp?retryWrites=true&w=majority",
+    "mongodb+srv://aryaman:aryaman@hackowasp.jk7hi.mongodb.net/hackowasp?retryWrites=true&w=majority",
     { useUnifiedTopology: true, useNewUrlParser: true }
   )
   .then(() => console.log("Connected to MongoDB..."))

@@ -16,6 +16,7 @@ import QuestionAdmin from "./components/Admin/QuestionAdmin";
 import AdminPage from "./components/Admin/AdminPage";
 import InviteUser from "./components/Admin/InviteUser";
 import Permissions from "./components/Admin/Permissions";
+import CodeQuestion from "./components/Question/CodeQuestion";
 
 const App = () => {
   useEffect(() => {
@@ -31,6 +32,7 @@ const App = () => {
             <Route exact path="/team/:id" component={TeamPage} />
             <Route exact path="/eventPage/:eventId" component={EventPage} />
             <Route exact path="/leaderboard" component={TeamCollection} />
+            <Route exact path="/code/:questionId" component={CodeQuestion} />
             <Route exact path="/timeline" component={TimelinePage} />
             <Route exact path="/admin/event/:id" component={QuestionAdmin} />
             <Route exact path="/admin/event" component={EventAdmin} />
