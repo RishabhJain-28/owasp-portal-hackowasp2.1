@@ -63,6 +63,10 @@ mongoose
 
 // Port Setup
 
-// const port = process.env.PORT || 5000;
-const port = 5000; // added as 5000 for callbackURL on google dev // change after deployment
+app.use(function (req, res) {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
+
+const port = process.env.PORT || 5000;
+// const port = 5000; // added as 5000 for callbackURL on google dev // change after deployment
 app.listen(port, () => console.log(`Server Started on port ${port}...`));
