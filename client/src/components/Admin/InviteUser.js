@@ -10,9 +10,12 @@ class InviteUser extends Component {
 
   onSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post(`http://localhost:5000/api/admin/invite`, {
-      email: this.state.email,
-    });
+    const res = await axios.post(
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/admin/invite`,
+      {
+        email: this.state.email,
+      }
+    );
     console.log(res);
     alert(res.data);
   };

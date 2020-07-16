@@ -12,7 +12,9 @@ class EventAdmin extends Component {
     },
   };
   async componentDidMount() {
-    const { data } = await axios.get("http://localhost:5000/api/event/all");
+    const { data } = await axios.get(
+      "https://owasp-portal-hackowasp21.herokuapp.com/api/event/all"
+    );
     console.log(data);
     this.setState({ events: data });
   }
@@ -24,7 +26,7 @@ class EventAdmin extends Component {
   createEvent = async () => {
     const events = [...this.state.events];
     const { data } = await axios.post(
-      "http://localhost:5000/api/event/new",
+      "https://owasp-portal-hackowasp21.herokuapp.com/api/event/new",
       this.state.current
     );
     console.log(data);
@@ -34,7 +36,7 @@ class EventAdmin extends Component {
   deleteEvent = async (id) => {
     let events = [...this.state.events];
     const { data } = await axios.delete(
-      `http://localhost:5000/api/event/delete/${id}`,
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/event/delete/${id}`,
       this.state.current
     );
     console.log(data);
@@ -47,7 +49,7 @@ class EventAdmin extends Component {
     const events = [...this.state.events];
     const index = events.findIndex((e) => e._id === id);
     const { data } = await axios.put(
-      `http://localhost:5000/api/event/toggleActive/${id}`,
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/event/toggleActive/${id}`,
       {
         isActive: !events[index].isActive,
       }

@@ -12,7 +12,7 @@ class TimelinesComponent extends Component {
 
   async componentDidMount() {
     const { data: timelines } = await axios.get(
-      "http://localhost:5000/api/timeline"
+      "https://owasp-portal-hackowasp21.herokuapp.com/api/timeline"
     );
     // console.log(timelines);
     // if()
@@ -23,7 +23,7 @@ class TimelinesComponent extends Component {
     const timelines = [...this.state.timelines];
     // console.log("aadddd", timelines[this.state.currentTimeline]._id);
     const { data: node } = await axios.post(
-      `http://localhost:5000/api/timeline/node/create/${
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/timeline/node/create/${
         timelines[this.state.currentTimeline]._id
       }`,
       {
@@ -54,7 +54,7 @@ class TimelinesComponent extends Component {
     delete t._id;
     delete t.__v;
     const { data } = await axios.put(
-      `http://localhost:5000/api/timeline/${tid}`,
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/timeline/${tid}`,
       t
     );
     // console.log(res);
@@ -90,7 +90,7 @@ class TimelinesComponent extends Component {
     delete t._id;
     delete t.__v;
     const { data } = await axios.put(
-      `http://localhost:5000/api/timeline/${tid}`,
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/timeline/${tid}`,
       t
     );
     // console.log(res);
@@ -108,7 +108,7 @@ class TimelinesComponent extends Component {
     console.log(t.start);
     console.log(t.end);
     const { data } = await axios.post(
-      `http://localhost:5000/api/timeline/create/`,
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/timeline/create/`,
       t
     );
     const timelines = [...this.state.timelines];
@@ -126,7 +126,7 @@ class TimelinesComponent extends Component {
 
     let current = this.state.currentTimeline;
     const res = await axios.delete(
-      `http://localhost:5000/api/timeline/${
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/timeline/${
         this.state.timelines[this.state.currentTimeline]._id
       }`
     );
@@ -150,7 +150,7 @@ class TimelinesComponent extends Component {
     delete t._id;
     delete t.__v;
     const { data } = await axios.put(
-      `http://localhost:5000/api/timeline/${tid}`,
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/timeline/${tid}`,
       t
     );
     // console.log(data);
@@ -160,7 +160,7 @@ class TimelinesComponent extends Component {
   markNode = async (id) => {
     const timelines = [...this.state.timelines];
     const { data } = await axios.get(
-      `http://localhost:5000/api/timeline/node/done/${
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/timeline/node/done/${
         timelines[this.state.currentTimeline]._id
       }&${id}`
     );
@@ -171,7 +171,7 @@ class TimelinesComponent extends Component {
   markTimeline = async () => {
     const timelines = [...this.state.timelines];
     const { data } = await axios.get(
-      `http://localhost:5000/api/timeline/done/${
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/timeline/done/${
         timelines[this.state.currentTimeline]._id
       }`
     );

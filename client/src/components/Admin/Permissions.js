@@ -5,7 +5,7 @@ class Permissions extends Component {
   state = { users: [], currentUser: "", permission: "" };
   async componentDidMount() {
     const { data: users } = await axios.get(
-      `http://localhost:5000/api/admin/all/members`
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/admin/all/members`
     );
     console.log(users);
     this.setState({ users });
@@ -24,7 +24,7 @@ class Permissions extends Component {
     const {
       data,
     } = await axios.put(
-      `http://localhost:5000/api/admin/permission/${this.state.currentUser._id}`,
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/admin/permission/${this.state.currentUser._id}`,
       { permission: this.state.permission }
     );
     users[index] = data;

@@ -19,10 +19,13 @@ class Compiler extends Component {
     this.setState({ value });
   };
   submitCode = async () => {
-    const { data } = await axios.post("http://localhost:5000/api/compile", {
-      code: this.state.value,
-      input: this.state.input,
-    });
+    const { data } = await axios.post(
+      "https://owasp-portal-hackowasp21.herokuapp.com/api/compile",
+      {
+        code: this.state.value,
+        input: this.state.input,
+      }
+    );
     console.log(data.run_status.output);
     this.setState({ output: data.run_status.output });
   };

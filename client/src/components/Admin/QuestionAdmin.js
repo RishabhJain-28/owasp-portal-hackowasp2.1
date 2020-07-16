@@ -15,7 +15,7 @@ class QuestionAdmin extends Component {
   };
   async componentDidMount() {
     const { data } = await axios.get(
-      `http://localhost:5000/api/question/eventQuestions/${this.props.match.params.id}`
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/question/eventQuestions/${this.props.match.params.id}`
     );
     console.log(data);
     this.setState({ questions: data });
@@ -28,7 +28,7 @@ class QuestionAdmin extends Component {
   createQuestion = async () => {
     const questions = [...this.state.questions];
     const { data } = await axios.post(
-      "http://localhost:5000/api/question/new",
+      "https://owasp-portal-hackowasp21.herokuapp.com/api/question/new",
       this.state.current
     );
     console.log(data);
@@ -38,7 +38,7 @@ class QuestionAdmin extends Component {
   deleteQuestion = async (id) => {
     let questions = [...this.state.questions];
     const { data } = await axios.delete(
-      `http://localhost:5000/api/question/delete/${id}`,
+      `https://owasp-portal-hackowasp21.herokuapp.com/api/question/delete/${id}`,
       this.state.current
     );
     console.log(data);
