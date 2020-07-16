@@ -22,15 +22,27 @@ const Navbar = ({
         <div className="navbar-fixed">
           <div className="nav-wrapper ">
             <Link to="#!" className="brand-logo center " id="brand-logo">
-              Event Portal{" "}
+              OWASP Portal{" "}
             </Link>
             <ul id="nav-mobile" className="right">
               {loadingUser === false &&
               isAuthenticated === true &&
               user !== null ? (
                 <Fragment>
+                  {user.permission !== "USER" ? (
+                    <Fragment>
+                      <li>
+                        <Link to="/timeline">Management</Link>
+                      </li>
+
+                      <li>
+                        <Link to="/admin">Admin Portal</Link>
+                      </li>
+                    </Fragment>
+                  ) : null}
+
                   <li>
-                    <Link to="/timeline">Management</Link>
+                    <Link to="/user">User</Link>
                   </li>
 
                   <li>
