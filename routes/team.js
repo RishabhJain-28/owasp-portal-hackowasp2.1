@@ -22,15 +22,14 @@ router.post("/new", async (req, res) => {
     const team = await Team.create({
       teamName: req.body.teamName,
       teamCode: shortid.generate().toString(),
-      members: req.user._id
+      members: req.user._id,
     });
 
     team.populate("members", (err, doc) => {
-      if(!err){
+      if (!err) {
         res.json(doc);
       }
     });
-
   } catch (error) {
     console.log("Error occured in request \n", error);
     res.status(400).send("Error occured in request");
@@ -47,11 +46,10 @@ router.put("/join", async (req, res) => {
     ).exec();
 
     team.populate("members events", (err, doc) => {
-      if(!err){
+      if (!err) {
         res.json(team);
       }
-    })
-
+    });
   } catch (error) {
     console.log("Error occured in request. \n", error);
     res.status(400).send("Error occured in request.");
@@ -59,14 +57,17 @@ router.put("/join", async (req, res) => {
 });
 
 // Leave Team
-router.put("/leave/:id", async(req, res) => {
-  try{
-    const team = await Team.findByIdAndUpdate(req.params.id, {
-      $pull: { members: req.user._id },
-    }, { new: true }).exec();
+router.put("/leave/:id", async (req, res) => {
+  try {
+    const team = await Team.findByIdAndUpdate(
+      req.params.id,
+      {
+        $pull: { members: req.user._id },
+      },
+      { new: true }
+    ).exec();
     res.json(team);
-
-  }catch(error){
+  } catch (error) {
     console.log("Error occured in request. \n", error);
     res.status(400).send("Error occured in request.");
   }
@@ -147,10 +148,10 @@ router.put("/toggleAccess/:id", async (req, res) => {
 });
 
 // Add event to team ( Array ) <
-router.put("/addEvents/:id", async (req, res) => {
+router.put("/addEvents", async (req, res) => {
   try {
-    const team = await Team.findByIdAndUpdate(
-      req.params.id,
+    const team = await Team.findOneAndUpdate(
+      { members: req.user._id },
       {
         events: req.body.events,
       },
@@ -165,12 +166,12 @@ router.put("/addEvents/:id", async (req, res) => {
 });
 
 // Add event ( Object ) <
-router.put("/addEvent/:id", async (req, res) => {
+router.put("/addEvent", async (req, res) => {
   try {
-    const team = await Team.findByIdAndUpdate(
-      req.params.id,
+    const team = await Team.findOneAndUpdate(
+      { members: req.user._id },
       {
-        $push: { events: req.body.event },
+        $push: { events: req.body.eventId },
       },
       { new: true }
     ).exec();
@@ -264,21 +265,26 @@ router.put("/submit/:id", async (req, res) => {
     let teamQuestion = _.find(team.questionsAssigned, {
       question: question._id,
     });
-    teamQuestion.submittedAnswer = req.body.submittedAnswer;
 
     // Update score of team
-    const decrytedAnswer = CryptoJS.Rabbit.decrypt(
+    const decryptedAnswer = CryptoJS.Rabbit.decrypt(
       question.answer,
       "this is weird secret key ;)"
-    );
-    if (req.body.submittedAnswer === decrytedAnswer) {
+    ).toString(CryptoJS.enc.Latin1);
+    console.log(decryptedAnswer);
+
+    if (
+      req.body.submittedAnswer.trim() === decryptedAnswer &&
+      teamQuestion.submittedAnswer !== decryptedAnswer
+    ) {
+      teamQuestion.submittedAnswer = req.body.submittedAnswer;
       team.score = team.score + question.points;
       team = await team.save();
 
       res.json({ message: "Correct Answer !", score: team.score });
     } else {
+      teamQuestion.submittedAnswer = req.body.submittedAnswer;
       team = await team.save();
-
       res.json({ message: "Wrong Answer !", score: team.score });
     }
   } catch (error) {
@@ -360,7 +366,7 @@ router.get("/start/:id", async (req, res) => {
 
     const eventTeams = await Team.find({ events: event._id }).exec();
 
-    res.json({team, event, eventTeams});
+    res.json({ team, event, eventTeams });
   } catch (error) {
     console.log("Error occured in request \n", error);
     res.status(400).send("Error occured in request");

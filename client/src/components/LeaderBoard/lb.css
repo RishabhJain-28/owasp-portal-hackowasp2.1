@@ -1,0 +1,120 @@
+.total {
+  background: url("../../assets/images/bg-01.png");
+  background-position: center;
+  background-attachment: fixed;
+  -webkit-background-size: cover; /* the next 3 lines are "browser prefixes", they are necessary to include for CSS3 techniques */
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0;
+  height: 100%;
+}
+.bar {
+  margin-top: 30px;
+  padding: 10px;
+  background: #f45184;
+  width: 100%;
+  background-attachment: fixed;
+}
+.logo {
+  width: 400px;
+}
+
+.leaderboard {
+  width: 100%;
+  margin: 60px auto 0 auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px grey;
+}
+
+.team {
+  margin: 10px;
+  padding: 20px;
+  border-bottom: 2px solid lightgrey;
+}
+.team:hover {
+  box-shadow: 1px 1px 1px 1px grey;
+}
+.rank {
+  float: left;
+  padding-left: 20px;
+  padding-right: 50px;
+  font-family: "Galada", cursive;
+  font-size: 50px;
+}
+.profile {
+  float: left;
+  margin-top: 40px;
+  width: 90px;
+  padding-left: 20px;
+  padding-right: 50px;
+}
+.Teamname {
+  float: left;
+  padding-left: 20px;
+  padding-right: 50px;
+  font-family: "Galada", cursive;
+  font-family: "Galada", cursive;
+  font-size: 50px;
+}
+.code {
+  float: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: "Galada", cursive;
+  font-family: "Galada", cursive;
+  font-size: 50px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+@media only screen and (min-width: 800px) {
+  .logo {
+    width: 200px;
+    transition: 0.5s;
+  }
+  .logo:hover {
+    width: 250px;
+  }
+  .leaderboard {
+    width: 700px;
+    margin: 60px auto 0 auto;
+    transition: 1s;
+  }
+  .leaderboard:hover {
+    width: 750px;
+  }
+  .rank {
+    font-size: 20px;
+    transition: 1s;
+  }
+  .rank:hover {
+    font-size: 30px;
+  }
+  .profile {
+    margin-top: 20px;
+    width: 50px;
+    transition: 1s;
+  }
+  .profile:hover {
+    width: 60px;
+  }
+  .Teamname {
+    font-size: 20px;
+    transition: 1s;
+  }
+  .Teamname:hover {
+    font-size: 30px;
+  }
+  .code {
+    font-size: 20px;
+    transition: 1s;
+  }
+  .code:hover {
+    font-size: 30px;
+  }
+}

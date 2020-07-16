@@ -1,7 +1,11 @@
 import axios from "axios";
-import store from "../store";
 
-import { START_EVENT, SUBMIT_ANSWER, SET_CURRENT_QUESTION } from "./types";
+import {
+  START_EVENT,
+  SUBMIT_ANSWER,
+  SET_CURRENT_QUESTION,
+  GET_LEADERBOARD,
+} from "./types";
 
 // start event
 export const startEvent = (eventId) => async (dispatch) => {
@@ -36,10 +40,16 @@ export const submitAnswer = (questionId, answer) => async (dispatch) => {
     config
   );
 
-  console.log(res.data);
-
   dispatch({
     type: SUBMIT_ANSWER,
     payload: res.data,
+  });
+};
+
+// get leaderboard
+export const getLeaderboard = () => async (dispatch) => {
+  console.log("get leaderboard")
+  dispatch({
+    type: GET_LEADERBOARD,
   });
 };
