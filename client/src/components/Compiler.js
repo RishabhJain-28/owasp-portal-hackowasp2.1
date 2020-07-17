@@ -10,12 +10,12 @@ import M from "materialize-css/dist/js/materialize.min.js";
 
 class Compiler extends Component {
   state = {
-    languages: [],
-    value: `function onLoad(editor) {
-    console.log("i've loaded");
-  }`,
+    languages: ["PYTHON", "JAVASCRIPT_NODE", "CPP14"],
+    value: `print('abc')
+  `,
     output: "",
     input: "",
+    current_lang: "PYTHON",
   };
   componentDidMount() {
     M.AutoInit();
@@ -23,37 +23,73 @@ class Compiler extends Component {
   onChange = (value) => {
     this.setState({ value });
   };
-  submitCode = async () => {
+  runCode = async () => {
     const { data } = await axios.post(
-      "https://owasp-portal-hackowasp21.herokuapp.com/api/compile",
+      // "https://owasp-portal-hackowasp21.herokuapp.com/api/compile",
+      "http://localhost:5000/api/compile",
       {
         code: this.state.value,
         input: this.state.input,
+        lang: this.state.current_lang,
       }
     );
     console.log(data.run_status.output);
+    console.log(data);
     this.setState({ output: data.run_status.output });
+  };
+  submit = async () => {
+    let { data: compiled } = await axios.post(
+      // "https://owasp-portal-hackowasp21.herokuapp.com/api/compile",
+      "/api/compile/submitCode",
+      {
+        code: this.state.value,
+        input: this.state.input,
+        lang: this.state.current_lang,
+      }
+    );
+    console.log(compiled.run_status.output);
+    console.log(compiled);
+    const id = 1;
+    let { data } = await axios.post(
+      // "https://owasp-portal-hackowasp21.herokuapp.com/api/compile",
+      `/api/team/submit/${id}`,
+      {
+        submittedAnswer: compiled.run_status.output,
+      }
+    );
+    alert(data);
   };
   onInputChange = (e) => {
     this.setState({ input: e.target.value });
+  };
+  selectLanguage = (e) => {
+    this.setState({ current_lang: e.target.value });
+  };
+  getMode = () => {
+    const lang = this.state.current_lang;
+    if (lang === "PYTHON") return "python";
+    if (lang === "CPP14") return "";
+    if (lang === "JAVASCRIPT_NODE") return "javascript";
   };
   render() {
     return (
       <>
         <div class="input-field col s12">
-          <select>
-            <option value="" disabled selected>
+          <select onChange={this.selectLanguage}>
+            {/* <option value="" disabled selected>
               Choose your option
-            </option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
+            </option> */}
+            {this.state.languages.map((lang) => (
+              <option key={lang} value={lang}>
+                {lang}
+              </option>
+            ))}
           </select>
-          <label>Materialize Select</label>
+          <label>Select language</label>
         </div>
         <AceEditor
           placeholder="Placeholder Text"
-          mode="javascript"
+          mode={this.getMode()}
           theme="monokai"
           name="blah2"
           onLoad={this.onLoad}
@@ -71,7 +107,8 @@ class Compiler extends Component {
             tabSize: 2,
           }}
         />
-        <button onClick={this.submitCode}>Submit</button>
+        <button onClick={this.runCode}>run</button>
+        <button onClick={this.submit}>Submit</button>
         <br />
         <label htmlFor="input">Input</label>
         <input

@@ -20,6 +20,7 @@ import InviteUser from "./components/Admin/InviteUser";
 import Permissions from "./components/Admin/Permissions";
 import CodeQuestion from "./components/Question/CodeQuestion";
 import LandingPage from "./components/pages/LandingPage";
+import Compiler from "./components/Compiler";
 
 const App = () => {
   useEffect(() => {
@@ -45,6 +46,7 @@ const App = () => {
               <Route exact path="/admin/permissions" component={Permissions} />
               <Route exact path="/admin/invite" component={InviteUser} />
               <Route exact path="/admin" component={AdminPage} />
+              <Route exact path="/compile" component={Compiler} />
             </Switch>
           </Fragment>
         </PersistGate>
