@@ -7,6 +7,8 @@ import "ace-builds/src-noconflict/ext-language_tools";
 import axios from "axios";
 
 import M from "materialize-css/dist/js/materialize.min.js";
+import { connect } from "react-redux";
+import { submitAnswer } from "../actions/teamAction";
 
 class Compiler extends Component {
   state = {
@@ -19,6 +21,8 @@ class Compiler extends Component {
   };
   componentDidMount() {
     M.AutoInit();
+    console.log("hello");
+    console.log(this.props);
   }
   onChange = (value) => {
     this.setState({ value });
@@ -38,16 +42,21 @@ class Compiler extends Component {
     this.setState({ output: data.run_status.output });
   };
   submit = async () => {
-    let { data: compiled } = await axios.post(
-      // "https://owasp-portal-hackowasp21.herokuapp.com/api/compile",
-      "/api/compile/submitCode",
-      {
-        code: this.state.value,
-        input: this.state.input,
-        lang: this.state.current_lang,
-      }
+    // let { data: compiled } = await axios.post(
+    //   // "https://owasp-portal-hackowasp21.herokuapp.com/api/compile",
+    //   "/api/compile/submitCode",
+    //   {
+    //     code: this.state.value,
+    //     input: this.state.input,
+    //     lang: this.state.current_lang,
+    //   }
+    // );
+    // console.log(compiled.run_status.output);
+
+    this.props.submitAnswer(
+      this.props.question.question._id,
+      this.state.output
     );
-    console.log(compiled.run_status.output);
 
     // const id = 1;
     // let { data } = await axios.post(
@@ -72,6 +81,11 @@ class Compiler extends Component {
     if (lang === "JAVASCRIPT_NODE") return "javascript";
   };
   render() {
+    // const {
+    //   team: { currentQuestion, alert },
+    //   submitAnswer,
+    //   question,
+    // } = this.props;
     return (
       <>
         <div class="input-field col s12">
@@ -123,4 +137,8 @@ class Compiler extends Component {
   }
 }
 
-export default Compiler;
+const mapStateToProps = (state) => ({
+  team: state.team,
+});
+
+export default connect(mapStateToProps, { submitAnswer })(Compiler);

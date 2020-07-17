@@ -3,19 +3,22 @@ import { Link } from "react-router-dom";
 import "materialize-css/dist/css/materialize.min.css";
 import M from "materialize-css/dist/js/materialize.min.js";
 import { connect } from "react-redux";
-import { loadUser, getMyTeams } from "../../actions/userAction";
+import { loadUser, getMyTeams, logoutUser } from "../../actions/userAction";
 
 const Navbar = ({
   user: { user, loadingUser, isAuthenticated, teams },
   loadUser,
   getMyTeams,
+  logoutUser,
 }) => {
   useEffect(() => {
     M.AutoInit();
     loadUser();
     getMyTeams();
   }, []);
-  const clickHandler = (e) => {};
+  const clickHandler = (e) => {
+    logoutUser();
+  };
   return (
     <Fragment>
       <nav className="black ">
@@ -48,6 +51,7 @@ const Navbar = ({
                   <li>
                     <a
                       href="https://owasp-portal-hackowasp21.herokuapp.com/api/user/logout"
+                      // href="http://localhost:5000/api/user/logout"
                       onClick={clickHandler}
                     >
                       Logout
@@ -57,7 +61,10 @@ const Navbar = ({
               ) : (
                 <li>
                   {" "}
-                  <a href="https://owasp-portal-hackowasp21.herokuapp.com/api/user/login">
+                  <a
+                    href="https://owasp-portal-hackowasp21.herokuapp.com/api/user/login"
+                    // href="http://localhost:5000/api/user/login"
+                  >
                     Login With Google
                   </a>
                 </li>
@@ -74,4 +81,6 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, { loadUser, getMyTeams })(Navbar);
+export default connect(mapStateToProps, { loadUser, getMyTeams, logoutUser })(
+  Navbar
+);

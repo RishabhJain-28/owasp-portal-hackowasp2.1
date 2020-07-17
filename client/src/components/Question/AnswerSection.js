@@ -29,31 +29,9 @@ const AnswerSection = ({ team: { alert }, submitAnswer, question }) => {
           <br /> <br /> <br />
           <div className="">
             <div className="white black-text container eve_rt_container">
-              <Compiler />
+              <Compiler question={question} />
             </div>
             <br />
-            <div className="row">
-              <form className="col s12" onSubmit={onSubmit}>
-                <div className="row">
-                  <div className="input-field col s12">
-                    <input
-                      name="answer"
-                      type="text"
-                      onChange={onChange}
-                      value={answer}
-                    />
-                    <label htmlFor="answer" className="active">
-                      Your answer goes here
-                    </label>
-                    <input
-                      type="submit"
-                      value="Submit"
-                      className="btn blue right"
-                    />
-                  </div>
-                </div>
-              </form>
-            </div>
           </div>
         </div>
       </div>
