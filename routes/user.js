@@ -23,7 +23,7 @@ router.get("/logout", (req, res) => {
   req.logout();
   // res.redirect("/api/user/login");
   // res.send("logged out");
-  res.redirect("https://owasp-portal-hackowasp21.herokuapp.com/");
+  res.redirect("https://owasp-portal-hackowasp21.herokuapp.com/user");
 });
 
 //Callback for auth
@@ -32,7 +32,7 @@ router.get(
   passport.authenticate("google"),
   (req, res) => {
     // res.json(req.user);
-    res.redirect("https://owasp-portal-hackowasp21.herokuapp.com/");
+    res.redirect("https://owasp-portal-hackowasp21.herokuapp.com/user");
     // res.redirect("http://localhost:3000/");
   }
 );
