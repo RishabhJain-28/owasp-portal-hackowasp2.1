@@ -48,16 +48,16 @@ class Compiler extends Component {
       }
     );
     console.log(compiled.run_status.output);
-    console.log(compiled);
-    const id = 1;
-    let { data } = await axios.post(
-      // "https://owasp-portal-hackowasp21.herokuapp.com/api/compile",
-      `/api/team/submit/${id}`,
-      {
-        submittedAnswer: compiled.run_status.output,
-      }
-    );
-    alert(data);
+
+    // const id = 1;
+    // let { data } = await axios.post(
+    //   // "https://owasp-portal-hackowasp21.herokuapp.com/api/compile",
+    //   `/api/team/submit/${id}`,
+    //   {
+    //     submittedAnswer: compiled.run_status.output,
+    //   }
+    // );
+    // alert(data);
   };
   onInputChange = (e) => {
     this.setState({ input: e.target.value });

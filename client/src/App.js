@@ -19,7 +19,7 @@ import AdminPage from "./components/Admin/AdminPage";
 import InviteUser from "./components/Admin/InviteUser";
 import Permissions from "./components/Admin/Permissions";
 import CodeQuestion from "./components/Question/CodeQuestion";
-import LandingPage from "./components/pages/LandingPage";
+
 import Compiler from "./components/Compiler";
 
 const App = () => {
@@ -34,7 +34,6 @@ const App = () => {
           <Fragment>
             <Navbar />
             <Switch>
-              <Route exact path="/" component={LandingPage} />
               <Route exact path="/user" component={UserPage} />
               <Route exact path="/team/:id" component={TeamPage} />
               <Route exact path="/eventPage/:eventId" component={EventPage} />
