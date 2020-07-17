@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "./styles.css";
+import "./style.css";
+import { Link } from "react-router-dom";
 const LandingPage = () => {
   return (
     <>
@@ -117,19 +118,22 @@ const LandingPage = () => {
           <div class="row land_row">
             <div class="overlay">
               {" "}
-              <a href="#" class="overlaybtn">
-                Event Portal
-              </a>
+              {/* <a href="#" class="overlaybtn">
+              </a> */}
+              <Link to="/user">Event Portal</Link>
             </div>
             <div class="overlay2">
-              <a href="#" class="overlaybtn">
+              <Link to="/learn">
                 Learning Portal
-              </a>
+                {/* Event Portal */}
+              </Link>
             </div>
             <div class="overlay3">
-              <a href="#" class="overlaybtn">
-                Management Portal
-              </a>
+              <Link to="/timeline">Management Portal</Link>
+              {/* Event Portal */}
+              {/* Learning Portal */}
+              {/* <a href="#" class="overlaybtn">
+              </a> */}
             </div>
             <div class="hexagon"></div>
             <div class="hexagon"></div>

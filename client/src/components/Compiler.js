@@ -6,6 +6,8 @@ import "ace-builds/src-noconflict/theme-github";
 import "ace-builds/src-noconflict/ext-language_tools";
 import axios from "axios";
 
+import M from "materialize-css/dist/js/materialize.min.js";
+
 class Compiler extends Component {
   state = {
     languages: [],
@@ -15,6 +17,9 @@ class Compiler extends Component {
     output: "",
     input: "",
   };
+  componentDidMount() {
+    M.AutoInit();
+  }
   onChange = (value) => {
     this.setState({ value });
   };
@@ -35,6 +40,17 @@ class Compiler extends Component {
   render() {
     return (
       <>
+        <div class="input-field col s12">
+          <select>
+            <option value="" disabled selected>
+              Choose your option
+            </option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <label>Materialize Select</label>
+        </div>
         <AceEditor
           placeholder="Placeholder Text"
           mode="javascript"
