@@ -21,6 +21,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
 app.use(express.static("./client/build"));
+app.use(express.static("./public"));
 
 // Importing Routes
 const team = require("./routes/team");
@@ -65,7 +66,7 @@ mongoose
 // Port Setup
 
 app.use(function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
 const port = process.env.PORT || 5000;
